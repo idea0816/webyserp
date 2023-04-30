@@ -10,6 +10,10 @@ const Admin = () => {
       Role is : {user.role}
       <br />
       LoggedIn : {`${user.loggedIn}`}
+      <br />
+      User ID : {`${user.id}`}
+      <br />
+      {user.token}
     </div>
   );
 };

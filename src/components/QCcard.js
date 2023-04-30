@@ -3,10 +3,14 @@ import axios from "axios";
 import { Card, Space, Button, message } from "antd";
 import Count from "./Count";
 
-const QCcard = ({ Data, getDate, getDep, getDdzl }) => {
+const QCcard = ({ Data, getDate, getDep, commURL }) => {
   let size = window.innerWidth / 3.3;
   // let report = useRef();
   let reportList = useRef([]);
+
+  // get localStorage's Token
+  let localToken = localStorage.getItem("token");
+  let userID = localStorage.getItem("userID");
 
   // for insQCRD arrays
   let insQCRDs = [];
@@ -18,7 +22,7 @@ const QCcard = ({ Data, getDate, getDep, getDdzl }) => {
           proNo: "",
           yybh: reportList.current[BllyList.yybh].exportChildValue().id,
           qty: reportList.current[BllyList.yybh].exportChildValue().count,
-          userid: "SUPER",
+          userid: userID,
           userdate: "",
         });
         // console.log(reportList.current[BllyList.yybh].exportChildValue());
@@ -28,26 +32,33 @@ const QCcard = ({ Data, getDate, getDep, getDdzl }) => {
     });
 
     // Connect to Server and POST
-    let API_URL = "http://192.168.27.4:9090";
+    let API_URL = commURL;
+
     //POST請求
     axios
-      .post(API_URL + "/QC/insQCRs", {
-        insQCR: [
-          {
-            proNo: "",
-            scdate: getDate,
-            sjxh: "10", // 工時區間、預設為日班10
-            gsbh: "VDH",
-            depNo: getDep,
-            gxlb: "A", // 工段、預設為成型A
-            scbh: "", // getDdzl, 訂單暫時取消
-            cc: "",
-            userid: "SUPER",
-            userdate: "",
-          },
-        ],
-        insQCRD: insQCRDs,
-      })
+      .post(
+        API_URL + "/QC/insQCRs",
+        {
+          insQCR: [
+            {
+              proNo: "",
+              scdate: getDate,
+              sjxh: "10", // 工時區間、預設為日班10
+              gsbh: "VDH",
+              depNo: getDep,
+              gxlb: "A", // 工段、預設為成型A
+              scbh: "", // getDdzl, 20221227-經與Neil討論、暫時拿掉訂單選擇功能
+              cc: "",
+              userid: userID,
+              userdate: "",
+            },
+          ],
+          insQCRD: insQCRDs,
+        },
+        {
+          headers: { token: localToken },
+        }
+      )
       .then(
         () => {
           message.success("SAVE OK!!!");

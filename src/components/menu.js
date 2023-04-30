@@ -1,27 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
+import { HomeOutlined, CodeOutlined } from "@ant-design/icons";
 
 const menu = () => {
   let menuItems = [
-    // { label: "Menu1", key: "item1" },
-    // {
-    //   label: <Link to="/login">Login</Link>,
-    //   key: "login",
-    // },
+    {
+      label: (
+        <Link to="/">
+          <HomeOutlined />
+        </Link>
+      ),
+      key: "home",
+    },
+    {
+      label: (
+        <Link to="/admin">
+          <CodeOutlined />
+        </Link>
+      ),
+      key: "admin",
+    },
     {
       label: "品檢作業",
       key: "llkczy",
-      children: [{ label: <Link to="/qcInput">QCInput</Link>, key: "qcInput" }],
+      children: [
+        { label: <Link to="/qcInput">QCInput</Link>, key: "qcInput" },
+        {
+          label: <Link to="/qcReport">QCReport</Link>,
+          key: "qcReport",
+        },
+      ],
     },
-    // {
-    //   label: <Link to="/admin">Admin</Link>,
-    //   key: "admin",
-    // },
-    // {
-    //   label: <Link to="/login">Login</Link>,
-    //   key: "login",
-    // },
   ];
 
   let menuClick = (e) => {};

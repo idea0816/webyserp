@@ -20,7 +20,7 @@ const QCdetailSheet = ({ Dep, Date, commURL }) => {
       title: "小計",
       dataIndex: "total",
     },
-    // { title: "7", dataIndex: "h7" },
+    { title: "7", dataIndex: "h7" },
     { title: "8", dataIndex: "h8" },
     { title: "9", dataIndex: "h9" },
     { title: "10", dataIndex: "h10" },
@@ -30,7 +30,10 @@ const QCdetailSheet = ({ Dep, Date, commURL }) => {
     { title: "14", dataIndex: "h14" },
     { title: "15", dataIndex: "h15" },
     { title: "16", dataIndex: "h16" },
-    // { title: "17", dataIndex: "h17" },
+    { title: "17", dataIndex: "h17" },
+    { title: "18", dataIndex: "h18" },
+    { title: "19", dataIndex: "h19" },
+    { title: "20", dataIndex: "h20" },
   ];
 
   // Connect to Server

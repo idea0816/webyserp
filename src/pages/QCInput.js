@@ -3,7 +3,6 @@ import axios from "axios";
 import { Space, DatePicker, Select, Tabs, Button } from "antd";
 import QCcard from "../components/QCcard";
 import moment from "moment";
-// import { format } from "date-fns";
 
 const QCInput = ({ commURL }) => {
   let [dep, setDep] = useState([]);

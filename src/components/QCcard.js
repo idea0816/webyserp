@@ -5,12 +5,12 @@ import Count from "./Count";
 
 const QCcard = ({ Data, getDate, getDep, commURL }) => {
   let size = window.innerWidth / 3.3;
-  // let report = useRef();
   let reportList = useRef([]);
 
   // get localStorage's Token
   let localToken = localStorage.getItem("token");
-  let userID = localStorage.getItem("userID");
+  // let userID = localStorage.getItem("userID");
+  let userID = "SUPER";
 
   // for insQCRD arrays
   let insQCRDs = [];

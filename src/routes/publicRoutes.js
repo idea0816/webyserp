@@ -8,13 +8,17 @@
 import Login from "../pages/myLogin";
 import Home from "../pages/blank";
 import Page403 from "../pages/403";
-
-// import React from "react";
+import Page404 from "../pages/404";
 
 const publicRoutes = [
   {
     path: "/",
     component: Home,
+    exact: true,
+  },
+  {
+    path: "/*",
+    component: Page404,
     exact: true,
   },
   {

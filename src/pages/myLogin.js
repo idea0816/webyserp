@@ -3,16 +3,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Form, Input, message } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-
 import context from "../routes/context";
 
-const MyLogin = ({ commURL }) => {
+const MyLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, setUser } = useContext(context);
-
-  // Connect to Server
-  let API_URL = commURL;
+  const { user, setUser, API_URL } = useContext(context);
 
   // button click
   const onFinish = (values) => {
@@ -33,7 +29,7 @@ const MyLogin = ({ commURL }) => {
         supervisorid: "",
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         message.success("Loinged !!!");
         if (user.loggedIn) return;
         setUser({
@@ -47,6 +43,8 @@ const MyLogin = ({ commURL }) => {
         localStorage.setItem("userid", response.data.userID);
         if (location.state?.from) {
           navigate(location.state.from);
+        } else {
+          navigate("/");
         }
       })
       .catch((error) => {
